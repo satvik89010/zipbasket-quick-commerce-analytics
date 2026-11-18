@@ -48,7 +48,7 @@ Moved the cleaned tables from Excel into MySQL.
 
 - Exported each cleaned Excel sheet to a CSV file.
 - Tried MySQL Workbench's Table Data Import Wizard first, but it threw errors on the files.
-- Switched to a manual load instead: created the database, wrote a `CREATE TABLE` statement for each table, then loaded every CSV with `LOAD DATA INFILE`.
+- Switched to a manual load instead: created the database, wrote a `CREATE TABLE` statement for each table, then loaded every CSV with `LOAD DATA INFILE`. Script: [`sql/01_create_and_load_tables.sql`](sql/01_create_and_load_tables.sql).
 - All 7 tables (orders, order_items, customers, products, stores, riders, store targets) loaded successfully.
 
 **Next session**
