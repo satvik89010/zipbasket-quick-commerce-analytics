@@ -1,8 +1,8 @@
 # ZipBasket Quick-Commerce Analytics
 
-End-to-end analysis of a 10-minute grocery delivery business: 32K orders, 29 dark stores, 6 cities. **Excel → SQL (PostgreSQL) → Tableau**.
+End-to-end analysis of a 10-minute grocery delivery business: 32K orders, 29 dark stores, 6 cities. **Excel → SQL (MySQL) → Tableau**.
 
-> 🔧 **Status: in progress.** Phase 1 (Excel cleaning) has started. See the [progress log](#progress-log) below.
+> 🔧 **Status: in progress.** Phase 1 (Excel cleaning) is done and Phase 2 (SQL) has started: all cleaned tables are loaded into MySQL. See the [progress log](#progress-log) below.
 
 ## Business problem
 
@@ -32,13 +32,29 @@ Raw operating data for Jan–Dec 2025 was exported from four different systems, 
 
 | Phase | Tool | What | Status |
 |---|---|---|---|
-| 1 | Excel / Power Query | Profile the raw files, log every issue, build a first clean version | 🟡 In progress |
-| 2 | PostgreSQL | raw → staging → mart layers, star schema, data-quality tests | ⬜ Not started |
+| 1 | Excel / Power Query | Profile the raw files, log every issue, build a first clean version | ✅ Done |
+| 2 | MySQL | raw → staging → mart layers, star schema, data-quality tests | 🟡 In progress |
 | 3 | SQL | 30 business questions in 3 tiers (cohorts, RFM, market basket and more) | ⬜ Not started |
 | 4 | Tableau Public | 3-page dashboard: overview, delivery operations, customers and profit | ⬜ Not started |
 | 5 | GitHub | README, insights, recommendations | 🟡 Ongoing |
 
 ## Progress log
+
+### 18 Nov 2026: Phase 2, data loaded into MySQL (Day 3)
+
+Moved the cleaned tables from Excel into MySQL.
+
+**Done**
+
+- Exported each cleaned Excel sheet to a CSV file.
+- Tried MySQL Workbench's Table Data Import Wizard first, but it threw errors on the files.
+- Switched to a manual load instead: created the database, wrote a `CREATE TABLE` statement for each table, then loaded every CSV with `LOAD DATA INFILE`.
+- All 7 tables (orders, order_items, customers, products, stores, riders, store targets) loaded successfully.
+
+**Next session**
+
+- Check row counts and key columns in MySQL against the cleaned Excel files.
+- Start the SQL work: data-quality checks, then the business questions.
 
 ### 16–17 Nov 2026: Phase 1, Excel cleaning (Days 1–2)
 
@@ -80,7 +96,7 @@ zipbasket-quick-commerce-analytics/
 
 ## Tools
 
-Excel (Power Query, XLOOKUP, PivotTables) · PostgreSQL · Tableau Public · Git and GitHub
+Excel (Power Query, XLOOKUP, PivotTables) · MySQL · Tableau Public · Git and GitHub
 
 ## About me
 
